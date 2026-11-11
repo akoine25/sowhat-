@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consolidated OJT Report Group 3 The Six Appeal</title>
+    <style>
+        :root {
+            --primary-navy: #0f2043;
+            --accent-gold: #e6a100;
+            --teal-header: #104e8b;
+            --bg-dark: #0a1528;
+            --bg-card: #15294f;
+            --text-light: #f1f5f9;
+            --text-muted: #cbd5e1;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            padding: 0;
+        }
+
+        /* Mobile viewport wrapper to simulate a long vertical scrolling report */
+        .mobile-container {
+            width: 100%;
+            max-width: 480px;
+            background-color: var(--primary-navy);
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0f2043, #1c3669);
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 4px solid var(--accent-gold);
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        header p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: rgba(230, 161, 0, 0.2);
+            color: var(--accent-gold);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            border: 1px solid var(--accent-gold);
+        }
+
+        .section-header {
+            background-color: var(--teal-header);
+            color: white;
+            padding: 12px 20px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-top: 10px;
+        }
+
+        .content-card {
+            background-color: var(--bg-card);
+            margin: 15px;
+            padding: 18px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .content-card h3 {
+            font-size: 1.05rem;
+            color: var(--accent-gold);
+            margin-bottom: 10px;
+        }
+
+        .content-card p, .content-card li {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 6px;
+        }
+
+        .photo-frame {
+            margin: 15px;
+            background: #000;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid var(--accent-gold);
+            text-align: center;
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .photo-caption {
+            background: rgba(15, 32, 67, 0.9);
+            padding: 10px;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Timeline style for daily activities */
+        .timeline-item {
+            position: relative;
+            padding-left: 20px;
+            border-left: 2px solid var(--accent-gold);
+            margin-bottom: 15px;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item h4 {
+            font-size: 0.95rem;
+            color: white;
+            margin-bottom: 4px;
+        }
+
+        .timeline-item p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        footer {
+            background-color: #050b14;
+            text-align: center;
+            padding: 25px 20px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            border-top: 2px solid var(--accent-gold);
+        }
+
+        footer strong {
+            color: var(--accent-gold);
+        }
+    </style>
+</head>
+<body>
+
+<div class="mobile-container">
+    
+    <!-- HEADER -->
+    <header>
+        <div class="badge">CGWCEIS TRAINING INSTITUTE</div>
+        <h1>CONSOLIDATED OJT REPORT</h1>
+        <p>Endpoint Assessment, Threat Hunting, IoC Blocking & Security Hardening (Days 1 to 5)<br><strong>Course:</strong> CGCSSC CL 01-2026 | <strong>Group 3</strong></p>
+    </header>
+
+    <!-- SECTION I -->
+    <div class="section-header">I. Introduction</div>
+    <div class="content-card">
+        <h3>Executive Summary</h3>
+        <p>TARANTADOO</p>
+    </div>
+
+    <!-- SECTION II -->
+    <div class="section-header">II. Objectives of the OJT</div>
+    <div class="content-card">
+        <h3>Core Operational Goals</h3>
+        <ul>
+            <li><strong>Days 1-2:</strong> Standardized endpoint security evaluations across F2 and F3 workstations.</li>
+            <li><strong>Day 3:</strong> Review threat intel briefs, extract file hashes, verify via VirusTotal, and enforce XDR block rules.</li>
+            <li><strong>Day 4:</strong> Real-time XDR alert triage and network isolation checks.</li>
+            <li><strong>Day 5:</strong> Endpoint maintenance and security hardening on unit <strong>CG5-IADS-LAP1</strong> (HP EliteBook x360 1030 G2).</li>
+        </ul>
+    </div>
+
+    <!-- SECTION III -->
+    <div class="section-header">III. Summary of Daily Activities</div>
+    <div class="content-card">
+        <div class="timeline-item">
+            <h4>Days 1 & 2: Endpoint Assessment</h4>
+            <p>Inspected OS baseline builds, verified Windows Firewall/Defender status, audited installed software compliance, and reviewed local account privileges across F2 and F3[cite: 5, 7].</p>
+        </div>
+        <div class="timeline-item" style="margin-top: 15px;">
+            <h4>Day 3: IoC Analysis & XDR Blocking</h4>
+            <p>Analyzed 6 threat reports (Phishing, Ransomware, RATs), extracted file hashes, checked scores via VirusTotal, and blocked malicious binaries on Trend Micro XDR[cite: 6].</p>
+        </div>
+        <div class="timeline-item" style="margin-top: 15px;">
+            <h4>Day 4: Alert Triage & Isolation</h4>
+            <p>Monitored live XDR dashboard feeds, triaged high-risk alerts, and verified active network isolation on flagged endpoints[cite: 4].</p>
+        </div>
+        <div class="timeline-item" style="margin-top: 15px;">
+            <h4>Day 5: System Hardening (CG5)</h4>
+            <p>Performed maintenance on <code>CG5-IADS-LAP1</code>, uninstalled non-compliant apps, updated XDR definitions, and executed full malware scans[cite: 3].</p>
+        </div>
+    </div>
+
+    <!-- PHOTO EMBED 1 -->
+    <div class="photo-frame">
+        <img src="group3.jpg" alt="Mga marites">
+        <div class="photo-caption">Group 3 conducting active workstation security audits and XDR monitoring under supervisory guidance.</div>
+    </div>
+
+    <!-- SECTION IV -->
+    <div class="section-header">IV. Key Learnings & Skills Acquired</div>
+    <div class="content-card">
+        <ul>
+            <li><strong>Endpoint Assessment:</strong> Mastered OS patch management and software inventory audits[cite: 7].</li>
+            <li><strong>Threat Intelligence:</strong> Proficiency in extracting file hash IoCs and validating via VirusTotal[cite: 6].</li>
+            <li><strong>XDR Administration:</strong> Practical skills in manual hash blocking and alert triage[cite: 4, 6].</li>
+            <li><strong>Remediation:</strong> Experience in software uninstallation, agent updates, and full malware scans[cite: 3].</li>
+        </ul>
+    </div>
+
+    <!-- SECTION V -->
+    <div class="section-header">V. Insights & Best Practices</div>
+    <div class="content-card">
+        <h3>Recommended Operations</h3>
+        <p>1. <strong>Defense-in-Depth:</strong> Combine OS patching, active firewalls, and centralized XDR monitoring.<br>
+        2. <strong>Proactive IoC Management:</strong> Regularly block verified file hashes to prevent execution[cite: 6].<br>
+        3. <strong>Network Containment:</strong> Rapid verification of endpoint isolation limits blast radius[cite: 4].</p>
+    </div>
+
+    <!-- SECTION VI -->
+    <div class="section-header">VI. Issues & Recommendations</div>
+    <div class="content-card">
+        <h3>Operational Mitigations</h3>
+        <p><strong>Issue:</strong> Inconsistent legacy baseline records and minor network stutters during updates[cite: 3, 5, 7].<br>
+        <strong>Action:</strong> Implement automated asset discovery, centralized patch scheduling, and stable connectivity checks prior to agent updates[cite: 3, 5, 7].</p>
+    </div>
+
+    <!-- SECTION VII -->
+    <div class="section-header">VII. Conclusion</div>
+    <div class="content-card">
+        <p>The 5-day OJT program successfully equipped Group 3 with essential practical competencies in endpoint security assessment, threat intelligence analysis, XDR alert triage, IoC blocking, and workstation hardening, bridging classroom theory with naval IT defense operations[cite: 3, 4, 5, 6, 7].</p>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p><strong>CGWCEIS TRAINING INSTITUTE</strong><br>Consolidated OJT Report - Group 3<br>© 2026 All Rights Reserved</p>
+    </footer>
+
+</div>
+
+</body>
+</html>
