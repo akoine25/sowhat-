@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CGCSSC</title>
+<style>
+/* ====================================== */
+/* === GLOBAL STYLES === */
+/* ====================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+body {
+    background-color: #050d1a;
+    color: #ffffff;
+    background-image: url('cyber logo z.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* ====================================== */
+/* === TOP HEADER BAR === */
+/* ====================================== */
+.top-header {
+    background-color: #001f3f;
+    padding: 8px 30px;
+    font-size: 14px;
+    color: #ccc;
+    border-bottom: 1px solid #003366;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* --- SEARCH BOX --- */
+.search-box {
+    display: flex;
+    align-items: center;
+}
+
+.search-box input {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: none;
+    border-radius: 3px 0 0 3px;
+    outline: none;
+    width: 250px;
+}
+
+.search-box button {
+    padding: 8px 12px;
+    background-color: #00a8e8;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 0 3px 3px 0;
+}
+
+/* ====================================== */
+/* === MAIN NAVIGATION BAR === */
+/* ====================================== */
+.navbar {
+    background-color: #111827;
+    display: flex;
+    align-items: center;
+    padding: 10px 30px;
+    border-bottom: 2px solid #00a8e8;
+    box-shadow: 0 0 15px rgba(0, 168, 232, 0.3);
+}
+
+/* --- LOGO STYLES (FIXED FOR BRIGHTNESS) --- */
+.logo-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-right: 20px;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: contain;
+    background-color: #ffffff; /* Clean white circular background so seals pop out */
+    padding: 3px; /* Thin white border frame */
+    box-shadow: 0 0 8px rgba(0, 168, 232, 0.4);
+}
+
+.site-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #ffffff;
+    letter-spacing: 1px;
+}
+
+/* ====================================== */
+/* === DROPDOWN MENU STYLES === */
+/* ====================================== */
+.nav-menu {
+    margin-left: auto;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-item a {
+    display: block;
+    color: #e0e0e8;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px 15px;
+    transition: background-color 0.3s;
+}
+
+.nav-item > a:hover,
+.nav-item > a.active {
+    background-color: #001f3f;
+    color: #00a8e8;
+    border-top: 2px solid #00a8e8;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 220px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 100;
+    top: 100%;
+    left: 0;
+    border-top: 3px solid #00a8e8;
+}
+
+.dropdown-content a {
+    color: #050d1a !important;
+    padding: 12px 18px;
+    text-decoration: none;
+    display: block;
+    font-size: 15px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+
+.dropdown-content a:hover {
+    background-color: #f0f0f0;
+    color: #00a8e8 !important;
+}
+
+.nav-item:hover .dropdown-content {
+    display: block;
+}
+
+/* ====================================== */
+/* === HERO SECTION === */
+/* ====================================== */
+.hero-section {
+    padding: 80px 30px;
+    text-align: left;
+    background: linear-gradient(to right, rgba(0,15,30,0.9), rgba(0,30,60,0.5));
+}
+
+.hero-title {
+    font-size: 50px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.hero-title span {
+    color: #00a8e8;
+}
+
+.hero-text {
+    font-size: 18px;
+    max-width: 700px;
+    color: #d0d0d0;
+    line-height: 1.6;
+}
+
+/* ====================================== */
+/* === CONTENT CARDS === */
+/* ====================================== */
+.content-section {
+    padding: 40px 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background-color: #ffffff;
+    color: #050d1a;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #001f3f;
+}
+
+.card-text {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333333;
+}
+</style>
+</head>
+<body>
+
+<!-- TOP HEADER BAR WITH SEARCH -->
+<div class="top-header">
+    <span>GROUP 3 : Six Appeal 🔥</span>
+    
+    <!-- SEARCH BOX ON THE RIGHT SIDE -->
+    <form class="search-box" action="https://www.google.com/search" method="GET" target="_blank">
+        <input type="text" name="q" placeholder="Search Google...">
+        <button type="submit">🔍</button>
+    </form>
+</div>
+
+<!-- MAIN NAVIGATION BAR -->
+<div class="navbar">
+    <div class="logo-group">
+        <img src="group1.jpg" alt="PCG Cybersecurity Logo" class="logo">
+        <img src="Group2.jpg" alt="PCG Cyber Command Logo" class="logo">
+        <img src="pcg.jpg" alt="PCG Main Logo" class="logo">
+    </div>
+    
+    <div class="site-title">Cybersecurity Specialization Course CL 01-2026</div>
+    
+    
+
+        
+    
+        
+</div>
+
+<!-- HERO SECTION -->
+<div class="hero-section">
+    <h1 class="hero-title">OBJECTIVES <span>CORE.</span></h1>
+    <p class="hero-text">The objectives are to translate cybersecurity concepts into operational security, safeguard PCG networks, data, and critical systems, perform active threat hunting and incident response, enforce baseline configurations and purge unapproved apps through host hardening, master tools like VirusTotal, Trend Micro XDR, and Defenders, and cultivate professional ethics and duty execution regarding values and teamwork</p>
+</div>
+
+<!-- CONTENT CARDS SECTION -->
+<div class="content-section">
+
+    <!-- CARD 1 -->
+    <div class="card">
+        <img src="day1.jpg" alt="News Image" class="card-img">
+        <div class="card-body">
+            <h3 class="card-title">ENDPOINT ASSESSMENT AT COMCEN AND FLEET 3 (F3)</h3>
+            <p class="card-text">Documentation of Group 3 conducting system evaluations, hardware troubleshooting, and security baseline checks across assigned computer units during the endpoint assessment phase at CGFLEET.
+</p>
+        </div>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="card">
+        <img src="day2jpg.jpg" alt="News Image" class="card-img">
+        <div class="card-body">
+            <h3 class="card-title">Blocking of Indicators of Compromise (IoC) using Extended Detection and Response (XDR)</h3>
+            <p class="card-text">Documentation of Group 3 the team reviewed threat intelligence reports to extract file hashes as IoCs, verified them using VirusTotal, and deployed the XDR platform to block malicious files and prevent execution risks
+</p>
+        </div>
+    </div>
+
+    <!-- CARD 3 -->
+    <div class="card">
+        <img src="day4.jpg" alt="News Image" class="card-img">
+        <div class="card-body">
+            <h3 class="card-title">Maintenance and Endpoint Security Hardening of HP EliteBook x360 1030 G2 Workstation (Removal of unauthorized computer applications, Trend Micro XDR updates, and virus/malware scanning)</h3>
+            <p class="card-text">Documentation of Group 3 conducting software audits, purging unauthorized third-party applications, and executing Trend Micro XDR remediation procedures during the CG-11 workstation hardening phase.
+</p>
+        </div>
+    </div>
+
+    <!-- CARD 4 -->
+    <div class="card">
+        <img src="day5.jpg" alt="News Image" class="card-img">
+        <div class="card-body">
+            <h3 class="card-title"> Endpoint Security Hardening and Application Audit</h3>
+            <p class="card-text">Documentation of Group 3 conducting security baseline audits, inspecting host defense configurations, and checking software compliance across assigned desktop units during the COMCEN assessment phase.
+</p>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CGCSSC</title>
+<style>
+/* ====================================== */
+/* === GLOBAL STYLES === */
+/* ====================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+body {
+    background-color: #050d1a;
+    color: #ffffff;
+    background-image: url('cyber logo z.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* ====================================== */
+/* === TOP HEADER BAR === */
+/* ====================================== */
+.top-header {
+    background-color: #001f3f;
+    padding: 8px 30px;
+    font-size: 14px;
+    color: #ccc;
+    border-bottom: 1px solid #003366;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* --- SEARCH BOX --- */
+.search-box {
+    display: flex;
+    align-items: center;
+}
+
+.search-box input {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: none;
+    border-radius: 3px 0 0 3px;
+    outline: none;
+    width: 250px;
+}
+
+.search-box button {
+    padding: 8px 12px;
+    background-color: #00a8e8;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 0 3px 3px 0;
+}
+
+/* ====================================== */
+/* === MAIN NAVIGATION BAR === */
+/* ====================================== */
+.navbar {
+    background-color: #111827;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 30px;
+    border-bottom: 2px solid #00a8e8;
+    box-shadow: 0 0 15px rgba(0, 168, 232, 0.3);
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* --- LOGO STYLES --- */
+.logo-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: contain;
+    background-color: #ffffff;
+    padding: 3px;
+    box-shadow: 0 0 8px rgba(0, 168, 232, 0.4);
+}
+
+.site-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #ffffff;
+    letter-spacing: 1px;
+}
+
+/* ====================================== */
+/* === MEMBERS DROPDOWN STYLES === */
+/* ====================================== */
+.members-dropdown {
+    position: relative;
+}
+
+.members-btn {
+    background-color: #001f3f;
+    color: #00a8e8;
+    border: 1px solid #00a8e8;
+    padding: 8px 16px;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s;
+}
+
+.members-btn:hover {
+    background-color: #00a8e8;
+    color: #ffffff;
+}
+
+.members-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 320px;
+    background-color: #0b172a;
+    border: 1px solid #00a8e8;
+    border-radius: 6px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+    padding: 12px;
+    z-index: 1000;
+}
+
+.members-dropdown:hover .members-menu {
+    display: block;
+}
+
+.members-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.member-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #111827;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #003366;
+    text-align: center;
+}
+
+.member-img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid #00a8e8;
+    background-color: #001f3f;
+    margin-bottom: 6px;
+}
+
+.member-name {
+    font-size: 12px;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* ====================================== */
+/* === HERO SECTION WITH SLIDESHOW === */
+/* ====================================== */
+.hero-section {
+    padding: 60px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    background: linear-gradient(to right, rgba(0,15,30,0.9), rgba(0,30,60,0.5));
+}
+
+.hero-content {
+    flex: 1;
+}
+
+.hero-title {
+    font-size: 50px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.hero-title span {
+    color: #00a8e8;
+}
+
+.hero-text {
+    font-size: 18px;
+    color: #d0d0d0;
+    line-height: 1.6;
+}
+
+/* --- SLIDESHOW STYLING --- */
+.hero-slider-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.slideshow-container {
+    position: relative;
+    width: 100%;
+    max-width: 520px;
+    height: 320px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid #00a8e8;
+    box-shadow: 0 0 20px rgba(0, 168, 232, 0.4);
+    background-color: #001f3f;
+}
+
+.slide {
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slide-fade {
+    animation: fadeEffect 1s ease-in-out;
+}
+
+@keyframes fadeEffect {
+    from { opacity: 0.4; }
+    to { opacity: 1; }
+}
+
+/* Controls */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 12px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.3s ease;
+    user-select: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    z-index: 10;
+}
+
+.prev {
+    left: 0;
+    border-radius: 0 3px 3px 0;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 168, 232, 0.8);
+}
+
+.dots-container {
+    position: absolute;
+    bottom: 12px;
+    width: 100%;
+    text-align: center;
+    z-index: 10;
+}
+
+.dot {
+    cursor: pointer;
+    height: 8px;
+    width: 8px;
+    margin: 0 3px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.dot.active, .dot:hover {
+    background-color: #00a8e8;
+}
+
+/* ====================================== */
+/* === CONTENT CARDS === */
+/* ====================================== */
+.content-section {
+    padding: 40px 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background-color: #ffffff;
+    color: #050d1a;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #001f3f;
+}
+
+.card-text {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333333;
+}
+
+@media(max-width: 900px) {
+    .hero-section {
+        flex-direction: column;
+    }
+    .slideshow-container {
+        max-width: 100%;
+        height: 260px;
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP HEADER BAR WITH SEARCH -->
+<div class="top-header">
+    <span>GROUP 3 : Six Appeal 🔥</span>
+    
+    <!-- SEARCH BOX ON THE RIGHT SIDE -->
+    <form class="search-box" action="https://www.google.com/search" method="GET" target="_blank">
+        <input type="text" name="q" placeholder="Search Google...">
+        <button type="submit">🔍</button>
+    </form>
+</div>
+
+<!-- MAIN NAVIGATION BAR -->
+<div class="navbar">
+    <div class="nav-left">
+        <div class="logo-group">
+            <img src="group1.jpg" alt="PCG Cybersecurity Logo" class="logo">
+            <img src="Group2.jpg" alt="PCG Cyber Command Logo" class="logo">
+            <img src="pcg.jpg" alt="PCG Main Logo" class="logo">
+        </div>
+        
+        <div class="site-title">Cybersecurity Specialization Course CL 01-2026</div>
+    </div>
+    
+    <!-- MEMBERS DROPDOWN -->
+    <div class="members-dropdown">
+        <button class="members-btn">GROUP3 MEMBERS ▾</button>
+        <div class="members-menu">
+            <div class="members-grid">
+                <!-- MEMBER 1 -->
+                <div class="member-item">
+                    <img src="SN1isito.jpg" alt="Member 1" class="member-img">
+                    <span class="member-name">SN1 Mark Joseph P Isito PCG</span>
+                </div>
+                <!-- MEMBER 2 -->
+                <div class="member-item">
+                    <img src="ASNbelison.jpg" alt="Member 2" class="member-img">
+                    <span class="member-name">ASN Romar C Belison PCG</span>
+                </div>
+                <!-- MEMBER 3 -->
+                <div class="member-item">
+                    <img src="ASNcabidog.jpg" alt="Member 3" class="member-img">
+                    <span class="member-name">ASN Royce M Cabidog PCG</span>
+                </div>
+                <!-- MEMBER 4 -->
+                <div class="member-item">
+                    <img src="ASNbeuno.jpg" alt="Member 4" class="member-img">
+                    <span class="member-name">ASN Michael L Bueno PCG</span>
+                </div>
+                <!-- MEMBER 5 -->
+                <div class="member-item">
+                    <img src="ASWlibay.jpg" alt="Member 5" class="member-img">
+                    <span class="member-name">ASW Domilyn T Libay PCG</span>
+                </div>
+                <!-- MEMBER 6 -->
+                <div class="member-item">
+                    <img src="ASN Abarro.jpg" alt="Member 6" class="member-img">
+                    <span class="member-name">ASN Charlie John G Abarro</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- HERO SECTION WITH SLIDESHOW ON THE RIGHT -->
+<div class="hero-section">
+    <div class="hero-content">
+        <h1 class="hero-title">OBJECTIVES <span>CORE.</span></h1>
+        <p class="hero-text">The objectives are to translate cybersecurity concepts into operational security, safeguard PCG networks, data, and critical systems, perform active threat hunting and incident response, enforce baseline configurations and purge unapproved apps through host hardening, master tools like VirusTotal, Trend Micro XDR, and Defenders, and cultivate professional ethics and duty execution regarding values and teamwork</p>
+    </div>
+
+    <!-- RIGHT SIDE 10-PICTURE SLIDESHOW -->
+    <div class="hero-slider-container">
+        <div class="slideshow-container">
+            <!-- Slide 1 -->
+            <div class="slide slide-fade">
+                <img src="SLIDE1.jpg" alt="Slide 1">
+            </div>
+            <!-- Slide 2 -->
+            <div class="slide slide-fade">
+                <img src="SLIDE2.jpg" alt="Slide 2">
+            </div>
+            <!-- Slide 3 -->
+            <div class="slide slide-fade">
+                <img src="SLIDE3.jpg" alt="Slide 3">
+            </div>
+            <!-- Slide 4 -->
+            <div class="slide slide-fade">
+                <img src="slide5.jpg" alt="Slide 4">
+            </div>
+            <!-- Slide 5 -->
+            <div class="slide slide-fade">
+                <img src="slide6.jpg" alt="Slide 5">
+            </div>
+            <!-- Slide 6 -->
+            <div class="slide slide-fade">
+                <img src="slide7.jpg" alt="Slide 6">
+            </div>
+            <!-- Slide 7 -->
+            <div class="slide slide-fade">
+                <img src="slide8.jpg" alt="Slide 7">
+            </div>
+            <!-- Slide 8 -->
+            <div class="slide slide-fade">
+                <img src="slide9.jpg" alt="Slide 8">
+            </div>
+            <!-- Slide 9 -->
+            <div class="slide slide-fade">
+                <img src="SLIDE99.jpg" alt="Slide 9">
+            </div>
+            <!-- Slide 10 -->
+            <div class="slide slide-fade">
+                <img src="SLIDE10.jpg" alt="Slide 10">
+            </div>
+
+            <!-- Navigation Buttons -->
+            <button class="prev" onclick="plusSlides(-1)">❮</button>
+            <button class="next" onclick="plusSlides(1)">❯</button>
+
+            <!-- Dots Indicators -->
+            <div class="dots-container">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
+                <span class="dot" onclick="currentSlide(5)"></span>
+                <span class="dot" onclick="currentSlide(6)"></span>
+                <span class="dot" onclick="currentSlide(7)"></span>
+                <span class="dot" onclick="currentSlide(8)"></span>
+                <span class="dot" onclick="currentSlide(9)"></span>
+                <span class="dot" onclick="currentSlide(10)"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CONTENT CARDS SECTION -->
+<div class="content-section">
+
+    <!-- CARD 1 -->
+    <div class="card">
+        <img src="day1.jpg" alt="News Image" class="card-img">
+        <div class="card-body">
+            <h3 class="card-title">ENDPOINT ASSESSMENT AT COMCEN AND FLEET 3 (F3)</h3>
+            <p class="card-text">Documentation of Group 3 conducting system evaluations, hardware troubleshooting, and security baseline checks across assigned computer units during the endpoint assessment phase at CGFLEET.</p>
+        </div>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="card">
+        <img src="day2jpg.jpg" alt="News Image" class="card-img">
+        <div class="card-body">
+            <h3 class="card-title">Blocking of Indicators of Compromise (IoC) using Extended Detection and Response (XDR)</h3>
+            <p class="card-text">Documentation of Group 3 the team reviewed threat intelligence reports to extract file hashes as IoCs, verified them using VirusTotal, and deployed the XDR platform to block malicious files and prevent execution risks</p>
+        </div>
+    </div>
+
+    <!-- CARD 3 -->
+    <div class="card">
+        <img src="day4.jpg" alt="News Image" class="card-img">
+        <div class="card-body">
+            <h3 class="card-title">Maintenance and Endpoint Security Hardening of HP EliteBook x360 1030 G2 Workstation (Removal of unauthorized computer applications, Trend Micro XDR updates, and virus/malware scanning)</h3>
+            <p class="card-text">Documentation of Group 3 conducting software audits, purging unauthorized third-party applications, and executing Trend Micro XDR remediation procedures during the CG-11 workstation hardening phase.</p>
+        </div>
+    </div>
+
+    <!-- CARD 4 -->
+    <div class="card">
+        <img src="day5.jpg" alt="News Image" class="card-img">
+        <div class="card-body">
+            <h3 class="card-title"> Endpoint Security Hardening and Application Audit</h3>
+            <p class="card-text">Documentation of Group 3 conducting security baseline audits, inspecting host defense configurations, and checking software compliance across assigned desktop units during the COMCEN assessment phase.</p>
+        </div>
+    </div>
+
+</div>
+
+<!-- SLIDESHOW SCRIPT -->
+<script>
+let slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+    showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+    showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+    let i;
+    let slides = document.getElementsByClassName("slide");
+    let dots = document.getElementsByClassName("dot");
+    if (n > slides.length) { slideIndex = 1 }
+    if (n < 1) { slideIndex = slides.length }
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active";
+}
+
+// Auto-advance slides every 4 seconds
+setInterval(() => {
+    plusSlides(1);
+}, 4000);
+</script>
+
+</body>
+</html>
