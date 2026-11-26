@@ -324,8 +324,8 @@
     const bgMusic = document.getElementById("bgMusic");
     const musicToggle = document.getElementById("musicToggle");
 
-    // Paste your Discord Webhook URL inside the quotes below to receive instant alerts
-    const DISCORD_WEBHOOK_URL = "";
+    // Web3Forms Key for Email Alerts
+    const WEB3FORMS_ACCESS_KEY = "fd3ca418-7056-4768-82ff-9b409ba196b0";
 
     const lines = [
       "NO",
@@ -338,6 +338,23 @@
 
     let count = 0;
     let userPausedManually = false;
+    let noAlertSent = false;
+
+    function sendAlert(eventType, detailsText) {
+      if (!WEB3FORMS_ACCESS_KEY) return;
+
+      fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: `Binondo Invite Alert: ${eventType}`,
+          from_name: "Binondo Love Letter",
+          message: `${detailsText}\nTimestamp: ${new Date().toLocaleString()}`
+        }),
+        keepalive: true
+      }).catch(err => console.error("Alert error:", err));
+    }
 
     function syncMusicButton() {
       musicToggle.textContent = bgMusic.paused ? "🎵 Play Music" : "🔊 Playing: YK.mp3";
@@ -395,20 +412,15 @@
       count++;
       noBtn.textContent = lines[count % lines.length];
 
+      // Send email alert if they tried NO at least 3 times
+      if (count >= 3 && !noAlertSent) {
+        noAlertSent = true;
+        sendAlert("Dodging NO", `They tried tapping NO (${count} attempts so far).`);
+      }
+
       // Grow YES button safely (max 1.5x scale)
       const scaleVal = Math.min(1.5, 1 + count * 0.08);
       yesBtn.style.transform = `scale(${scaleVal})`;
-    }
-
-    function sendWebhook(messageText) {
-      if (!DISCORD_WEBHOOK_URL) return;
-
-      fetch(DISCORD_WEBHOOK_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ content: messageText }),
-        keepalive: true
-      }).catch(err => console.error("Webhook error:", err));
     }
 
     function sayYes() {
@@ -419,15 +431,14 @@
         playSong();
       }
 
-      const timeString = new Date().toLocaleString();
-      sendWebhook(`💖 **ALERT:** She clicked **YES** to *"Tara binondo ♡?"* after **${count}** dodge attempt(s)! (${timeString})`);
+      sendAlert("Clicked YES 💖", `She clicked YES to "Tara binondo ♡?" after ${count} dodge attempt(s)!`);
     }
 
     function sendTime() {
       const val = timeInput.value.trim();
       if (!val) return;
 
-      sendWebhook(`⏰ **TIME UPDATE:** She replied with: **"${val}"**`);
+      sendAlert("Time Submitted ⏰", `She replied with preferred time: "${val}" (after ${count} NO dodge attempts).`);
       timeForm.style.display = "none";
       thankYouText.style.display = "block";
     }
